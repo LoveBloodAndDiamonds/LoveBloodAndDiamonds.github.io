@@ -21,7 +21,7 @@
             <div id="usercard"> <!--Карта профиля, человека, который к нам обратился-->
             </div>
         </div>
-        <input type="text" class="border border-blue-400 rounded-xl w-full p-2">
+        <input type="text" id="inputName" class="border border-blue-400 rounded-xl w-full p-2">
         <input type="text" class="border border-blue-400 rounded-xl w-full p-2">
         <input type="text" class="border border-blue-400 rounded-xl w-full p-2">
 
@@ -90,6 +90,7 @@
     });
 
     Telegram.WebApp.onEvent('mainButtonClicked', function () {
+        inputName.value = 'test'
         tg.sendData("some string that we need to send");
         //при клике на основную кнопку отправляем данные в строковом виде
     });

@@ -89,8 +89,11 @@
         }
     });
 
+    let inputName = document.getElementById("inputName"); //получаем блок usercard
+
     Telegram.WebApp.onEvent('mainButtonClicked', function () {
         inputName.value = 'test'
+        // inputName.inn = 'test'
         tg.sendData("some string that we need to send");
         //при клике на основную кнопку отправляем данные в строковом виде
     });

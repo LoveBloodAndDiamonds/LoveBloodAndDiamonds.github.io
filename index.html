@@ -1,114 +1,50 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://telegram.org/js/telegram-web-app.js"></script>
-
-
+  <title>Мое портфолио</title>
+  <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body>
+  <header>
+    <h1>Мое портфолио</h1>
+    <nav>
+      <ul>
+        <li><a href="#about">Обо мне</a></li>
+        <li><a href="#projects">Проекты</a></li>
+        <li><a href="#contact">Контакты</a></li>
+      </ul>
+    </nav>
+  </header>
 
+  <section id="about">
+    <h2>Обо мне</h2>
+    <p>Здесь вы можете написать немного о себе и своих навыках.</p>
+  </section>
 
-<div class="flex w-full h-screen flex-col">
-
-    <div class="flex flex-col p-5 gap-10 items-center">
-        <div class="my-5">
-            <div id="usercard"> <!--Карта профиля, человека, который к нам обратился-->
-            </div>
-        </div>
-        <input type="text" id="inputName" class="border border-blue-400 rounded-xl w-full p-2">
-        <input type="text" class="border border-blue-400 rounded-xl w-full p-2">
-        <input type="text" class="border border-blue-400 rounded-xl w-full p-2">
-
-        <div class="mt=15">
-            <button id="btnED" class="button">Enable/Disable Main Button</button>
-
-        </div>
+  <section id="projects">
+    <h2>Проекты</h2>
+    <div class="project">
+      <h3>Проект 1</h3>
+      <p>Описание проекта 1.</p>
     </div>
-    <button class="w-full mt-auto bg-blue-400 text-white p-3" id="btn">
-        Click me
-    </button>
-</div>
-<!--<div id="usercard"> &lt;!&ndash;Карта профиля, человека, который к нам обратился&ndash;&gt;-->
-<!--</div>-->
-<!--<p>Just text</p> &lt;!&ndash;Просто текст для проверки&ndash;&gt;-->
-<!--<a class="link" href="https://mihailgok.ru">Link</a> &lt;!&ndash;Просто ссылка для проверки&ndash;&gt;-->
-<!--<p class="hint">Some little hint</p> &lt;!&ndash;Просто текст-подсказка для проверки&ndash;&gt;-->
-<!--<button id="btn" class="button">Show/Hide Main Button</button> &lt;!&ndash;Кнопка, чтобы скрыть / показать основную кнопку&ndash;&gt;-->
-<!--<button id="btnED" class="button">Enable/Disable Main Button</button>-->
-<!--Кнопка, чтобы сделать кнопку активной/неактивной-->
+    <div class="project">
+      <h3>Проект 2</h3>
+      <p>Описание проекта 2.</p>
+    </div>
+  </section>
 
+  <section id="contact">
+    <h2>Контакты</h2>
+    <p>Свяжитесь со мной по электронной почте или через социальные сети.</p>
+    <ul>
+      <li>Email: example@example.com</li>
+      <li>GitHub: <a href="https://github.com/yourusername">yourusername</a></li>
+      <li>LinkedIn: <a href="https://www.linkedin.com/in/yourname">yourname</a></li>
+    </ul>
+  </section>
 
-<script>
-    let tg = window.Telegram.WebApp; //получаем объект webapp телеграма
-
-    tg.expand(); //расширяем на все окно
-
-    tg.MainButton.text = "Changed Text"; //изменяем текст кнопки
-    tg.MainButton.setText("Changed Text1"); //изменяем текст кнопки иначе
-    tg.MainButton.textColor = "#F55353"; //изменяем цвет текста кнопки
-    tg.MainButton.color = "#143F6B"; //изменяем цвет бэкграунда кнопки
-    tg.MainButton.setParams({"color": "#143F6B"}); //так изменяются все параметры
-
-    let inputName = document.getElementById("inputName"); //получаем блок usercard
-
-    Telegram.WebApp.onEvent('mainButtonClicked', function () {
-        inputName.value = 'test'
-        tg.sendData("some string that we need to send");
-        //при клике на основную кнопку отправляем данные в строковом виде
-    });
-
-    let usercard = document.getElementById("usercard"); //получаем блок usercard
-
-    let profName = document.createElement('p'); //создаем параграф
-    profName.innerText = `${tg.initDataUnsafe.user.first_name}
-${tg.initDataUnsafe.user.last_name}
-${tg.initDataUnsafe.user.username} (${tg.initDataUnsafe.user.language_code})`;
-    //выдем имя, "фамилию", через тире username и код языка
-    usercard.appendChild(profName); //добавляем
-
-    let userid = document.createElement('p'); //создаем еще параграф
-    userid.innerText = `${tg.initDataUnsafe.user.id}`; //показываем user_id
-    usercard.appendChild(userid); //добавляем
-</script>
-
-<style>
-    body {
-        color: var(--tg-theme-text-color);
-        background: var(--tg-theme-bg-color);
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        font-size: 18px;
-    }
-
-    .hint {
-        color: var(--tg-theme-hint-color);
-    }
-
-    .link {
-        color: var(--tg-theme-link-color);
-    }
-
-    .button {
-        background: var(--tg-theme-button-color);
-        color: var(--tg-theme-button-text-color);
-        border: none;
-        font-size: 18px;
-    }
-
-    .button:not(:last-child) {
-        margin-bottom: 20px
-    }
-
-    #usercard {
-        text-align: center;
-    }
-</style>
+  <footer>
+    <p>© 2022 Мое имя</p>
+  </footer>
 </body>
 </html>
